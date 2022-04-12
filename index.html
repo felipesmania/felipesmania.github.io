@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" type="text/css" rel="stylesheet">
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Projeto Personal Soft</title>
+</head>
+
+<body>
+
+    <div x-data="cadastro(), gravarForm()" class="formContainer">
+
+        <h1 id="titulo">COMPLETE SEUS DADOS</h1>
+
+        <div>
+            <form class="formulario" id="contactForm">
+                <label for="name">Nome</label>
+                <input required type="text" name="name" id="nome" placeholder="Insira seu nome completo">
+                <br>
+
+                <label for="email">E-Mail</label>
+                <input required type="email" name="email" id="email" placeholder="Insira seu e-mail"> <br>
+
+                <label for="telephone">Telefone</label>
+                <input required type="tel" name="telephone" id="telefone" placeholder="Insira seu telefone"> <br>
+
+                <label for="cpf">CPF</label>
+                <input required type="number" name="cpf" id="cpf" placeholder="Insira seu CPF"> <br>
+
+                <label for="date">Data de nascimento</label>
+                <input required type="date" name="date" id="data"> <br>
+
+                <label for="cep">CEP</label>
+                <input required type="text" name="cep" id="cep" placeholder="Insira seu CEP"> <br>
+
+                <label for="city">Cidade</label>
+                <input required type="text" name="city" id="cidade" placeholder="Insira sua cidade"> <br>
+
+                <label for="adress">Endereço</label>
+                <input required type="text" name="adress" id="endereco" placeholder="Insira seu endereço">
+                <br>
+
+                <button class="butn" id="enviar" x-on:click="gravarForm()">Enviar</button>
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        function cadastro() {
+            this.nome = localStorage.getItem("nome");
+            this.email = localStorage.getItem("email");
+            this.telefone = localStorage.getItem("telefone");
+            this.cpf = localStorage.getItem("cpf");
+            this.data = localStorage.getItem("data");
+            this.cep = localStorage.getItem("cep");
+            this.cidade = localStorage.getItem("cidade");
+            this.endereco = localStorage.getItem("endereco");
+        }
+
+
+        document.querySelector("#nome").value = localStorage.getItem("nome");
+        document.querySelector("#email").value = localStorage.getItem("email");
+        document.querySelector("#telefone").value = localStorage.getItem("telefone");
+        document.querySelector("#cpf").value = localStorage.getItem("cpf");
+        document.querySelector("#data").value = localStorage.getItem("data");
+        document.querySelector("#cep").value = localStorage.getItem("cep");
+        document.querySelector("#cidade").value = localStorage.getItem("cidade");
+        document.querySelector("#endereco").value = localStorage.getItem("endereco");
+
+        function gravarForm() {
+
+            localStorage.setItem("nome", document.querySelector("#nome").value);
+            localStorage.setItem("email", document.querySelector("#email").value);
+            localStorage.setItem("telefone", document.querySelector("#telefone").value);
+            localStorage.setItem("cpf", document.querySelector("#cpf").value);
+            localStorage.setItem("data", document.querySelector("#data").value);
+            localStorage.setItem("cep", document.querySelector("#cep").value);
+            localStorage.setItem("cidade", document.querySelector("#cidade").value);
+            localStorage.setItem("endereco", document.querySelector("#endereco").value);
+
+        }
+
+        let novoCad = new cadastro();
+        console.log(novoCad)
+
+
+    </script>
+
+
+</body>
+
+</html>
